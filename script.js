@@ -1,23 +1,22 @@
 var character = document.getElementById("character");
 var block = document.getElementById("block");
-var clock = document.getElementById("clock");
+var countdown = document.getElementById("countdown");
 
 var start = Date.now();
 
+var timeLeft = 10;
+var downloadTimer = setInterval(function(){
+  if(timeLeft <= 0){
+    clearInterval(downloadTimer);
+    document.getElementById("countdown").innerHTML = "Finished";
+  } else {
+    document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
+  }
+  timeLeft -= 1;
+}, 1000);
+
 window.onload = function() {
     clock.innerHTML = "START";
-    setInterval(timer(), 20000);
-}
-
-function reloadP() {
-    sessionStorage.setItem("reloading", "true");
-    document.location.reload();
-}
-
-function timer() {
-    var delta = Date.now() - start;
-    clock.innerHTML = time-delta;
-    if (time-delta === 0) {return}
 }
 
 function jump(){    
@@ -35,8 +34,8 @@ function jump(){
         if(blockLeft<-10 && blockLeft>-60 && characterTop>=130){
             block.style.animation="none";
             block.style.display="none";
-            //alert("game over");
-            window.location.replace("https://website1-nine.vercel.app/");
+            alert("game over");
+            //window.location.replace("https://website1-nine.vercel.app/");
 
         }
     },10);
