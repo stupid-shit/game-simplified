@@ -3,14 +3,10 @@ var block = document.getElementById("block");
 var clock = document.getElementById("clock");
 
 var start = Date.now();
-var timerB = 3000;
-var timerA = 5000;
 
 window.onload = function() {
-    timer(timerA);
-    clock.innerHTML = "START!";
-    setTimeout(500);
-    timer(timerB);
+    clock.innerHTML = "START";
+    setInterval(timer(), 20000);
 }
 
 function reloadP() {
@@ -18,7 +14,7 @@ function reloadP() {
     document.location.reload();
 }
 
-function timer(time) {
+function timer() {
     var delta = Date.now() - start;
     clock.innerHTML = time-delta;
     if (time-delta === 0) {return}
@@ -39,8 +35,9 @@ function jump(){
         if(blockLeft<-10 && blockLeft>-60 && characterTop>=130){
             block.style.animation="none";
             block.style.display="none";
-            alert("game over.");
-            // REDIRECT HERE
+            //alert("game over");
+            window.location.replace("https://website1-nine.vercel.app/");
+
         }
     },10);
 
