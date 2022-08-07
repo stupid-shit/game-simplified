@@ -2,15 +2,13 @@ var character = document.getElementById("character");
 var block = document.getElementById("block");
 var countdown = document.getElementById("countdown");
 
-var start = Date.now();
-
 var timeLeft = 10;
 var downloadTimer = setInterval(function(){
   if(timeLeft <= 0){
     clearInterval(downloadTimer);
-    document.getElementById("countdown").innerHTML = "Finished";
+    countdown.innerHTML = "Finished";
   } else {
-    document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
+    countdown.innerHTML = timeleft + " seconds remaining";
   }
   timeLeft -= 1;
 }, 1000);
